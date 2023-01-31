@@ -2,28 +2,36 @@
 
 # SUBWORD. search and replace a word in a file.
 
-# First read the file.
-
-# read from the user with a prompt (-p) 
-
-echo -e 'Please enter the word to target\n' 
-read target
+# Gather arguments from flags using 'getopts'
 
 
 
-echo -e 'Please enter a number\n' 
-read number
+# Let's look  at how command line arguments are dealt with in bash.
 
-if [ $number -gt 10 -a  $target = 'amin' ]
-then
-echo "hooray!! $number is good"
-else
-echo "boo!! $number  is no good"
-fi 
+# Bash collects the strings passed into the  command that executes a command or
+# scripts
 
 
+# getopts is a command that parses short options (with a single dash) can also
+# parse short options in combination in. Cannot parse options with long names,
+# use 'getopt' instead. 
+
+# $@ stores the arguments in string form, getopts parses that string assigning
+# the options to their respective flags.
 
 
+# Simple echo of getopts
 
+while getopts "t:s:f:" options;do
+echo  "$options" 
+done
 
+echo $options
+#  we want to loop over the files passed in.
+#	for passedIn in $@;
+#	do
+#		echo $passedIn
+#		grep Mary $passedIn
+#		echo -e "\n"
+#	done
 
