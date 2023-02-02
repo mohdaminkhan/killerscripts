@@ -1,4 +1,4 @@
-#! usr/bin/bash
+#!/usr/bin/env bash
 
 # SUBWORD. search and replace a word in a file.
 
