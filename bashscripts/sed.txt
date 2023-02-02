@@ -1,0 +1,25 @@
+SED
+
+stands for 'stream editor'
+
+
+> sed OPTIONS... [SCRIPT]  [INPUTFILE...]
+
+OPTIONS is a regular expression 
+
+it is proceeded by s for a substitution.
+
+just like :s in vim
+
+By default the 's' flag will replace the first occurence in a line 
+Not subsequent matches in a line.
+
+But it is performed globally
+
+To work on all occurences in a line we have to append the 'g' flag 
+
+one one one two
+one one one two
+one one one two
+one one one two
+one one one two
