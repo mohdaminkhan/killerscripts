@@ -1,0 +1,152 @@
+1/ Using codespaces. Gives us a Linux system to test bash.
+
+2/ There is no where to understand the meaning of the end of 
+
+
+3/ Using a mark M + Letter, to go back to a mark, ' + letter
+
+
+Basics of Bash
+
+
+Piping and redirection
+
+
+Pipining: taking the output of one program and pipe it as the input of another
+program.
+STDOUT is sent to STDIN 
+
+cat doesnt paginate , less does you can pipe cat into less
+cat some.txt |  less
+
+
+Basics of Bash
+
+
+Piping and redirection
+
+
+Pipining: taking the output of one program and pipe it as the input of another
+program.
+STDOUT is sent to STDIN 
+
+cat doesnt paginate , less does you can pipe cat into less
+cat some.txt |  less
+
+
+Basics of Bash
+
+
+Piping and redirection
+
+
+Pipining: taking the output of one program and pipe it as the input of another
+program.
+STDOUT is sent to STDIN 
+
+cat doesnt paginate , less does you can pipe cat into less
+cat some.txt |  less
+
+
+Basics of Bash
+
+
+Piping and redirection
+
+
+Pipining: taking the output of one program and pipe it as the input of another
+program.
+STDOUT is sent to STDIN 
+
+cat doesnt paginate , less does you can pipe cat into less
+cat some.txt |  less
+
+Redirection
+
+Take a stream and send it to or from files. 
+
+Redirection works with the
+standard input  STDIN  0 (keyboard or other input)
+standard output STDOUT 1 (regular output)
+standared error STDERR 2 (output marked as 'error')
+
+ls > somefile.txt  - overwrite what was in somefile.txt
+ls >> somefile.txt  - append to the end of somefile.txt
+
+ls 2> somefile.txt  -  take the error and overwrite somefile.txt
+
+You can add the number 1 to standard redirection just like with 2 for errors but
+it is not needed.
+
+To take input from a file we reverse the symbol, to make it 'less than' <
+
+A double 'less than' << is a 'Here document' we use a limit string to limit what
+is passed  in as input.
+
+
+Bash can use system commands(programs) but it also has its own 'builtins'
+These builtins are commands that are included in bash itself , sometimes
+builtins are the same or have the same name as system programs.
+'echo' and 'printf' are two examples.
+echo ends its output with a newline /n
+
+We can differentiate between builtins and system commands with prefixing with
+'builtin' or 'command'
+we can also see if a command is a builtin or system command(program) by running:
+> command -V <name of the command>
+Bash will always run the builtin version by default.
+command version of a command are located in /usr/bin/
+To run the command version instead of the builtin we run 'enable -n <command>'
+To switch back to the builtin 'enable <command>'
+
+commands have 'man' pages. builtins have help pages.
+
+
+EXPANSION
+
+the characters:
+{}
+()
+[]   
+~   home directory
+~- the previous directory
+allow expansions of variables and expressions 
+{} brace expansion:
+we can pass in a list of items separated by commas, or a range of letters or
+numbers, separated by two dots:
+
+{file1,file2,file3}  
+{x..y..z} {1..5}
+{1..100..5} the third number is the step number
+brace expansion can be used for passing multiple parameters for commands
+
+
+PARAMETER EXPANSION
+
+${..} <--- Can be used with or without braces.
+
+you can add numbers to substring a variable
+
+${var:3:4}
+
+we can also perform substitution using expression.
+
+COMMAND SUBSITUTION
+
+$(..) <-- Run a sub-process and return the outputted value.
+
+
+$((..)) expand an arithmatic expression. bear in mind that bash can only deal
+with integers.
+
+
+ECHO
+
+single-quotes/strong-quotes :print everything , no escaping or expansion.
+
+double-quotes: allows expansion
+
+no-quotes: expansion brackets need escaping.
+
+flags:
+-n : dont uses new line.(like printf)
