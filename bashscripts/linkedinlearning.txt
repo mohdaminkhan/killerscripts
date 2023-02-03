@@ -107,3 +107,93 @@ no-quotes: expansion brackets need escaping.
 
 flags:
 -n : dont uses new line.(like printf)
+
+-e : allows us to escape special characters, include \033[<code>;<code>m <text>
+\033
+]
+
+VARIABLES:
+
+Varibales are a special case of parameter expansion.
+Variables are case-sensitive. Tend to create user variables lowercase to
+distinguish between env variables.
+
+To assign variable  <varname>=<value> , can also wrap value in double quotes
+which allows string with spaces"
+
+Variable can be reassigned, but we can make them read-only
+
+'declare -r <varname>=<value>' <-- readonly variable
+
+the declare command allows to modify variables with a flags
+'help declare' <--- find out which flags you can pass 
+
+'declare -p' <--- see just what variables have been set.
+
+NUMBERS
+
+((...))  <--- arithmetic expansion , returns the result of mathematicl operation
+((...))  <--- arithmetic evaluation , assigns value to variable
+
+a=3
+((a+=3)) <--- increment a , no dolar sign needed
+((a-=3)) <--- decrement a , no dolar sign needed
+
+To do floating point number we use the program 'bc' or 'awk'
+
+dolar sign is not used , because we dont need to expand the variable , we want
+to assign to the variable itself
+
+Bash numbers are integers and are converted to string during expansion
+
+use 'declare -i b=3' <-- to make the variable explicityly an integer.
+
+RANDOM 
+generates a random number $RANDOM between 0 and  32767 <-- max value of 16 bit
+signed integer.You can reduce the range by modulo 100
+
+
+TEST
+
+test <test>
+
+returns true or false through EXIT status, can be expressed as [ expression ]
+
+help test <-- will show the flags available for test
+
+
+[[ .. ]] <-- extended test allows more than one expression, using logical
+operators && , || (like
+js)
+
+Logical operators can be used to combine expression with teh second depending
+the boolean of the first.
+
+You can also test regex [[ "cat" =~ c.* ]] 
+
+
+PRINTF
+
+Like echo but we can use placeholders. %d  <--- a digit value
+%s <--- a string value
+
+
+
+after the end of the line we provide the values/exprssions to be substituted.
+
+
+
+ARRAYS
+
+Bash supports two types of arrays: indexed and associatie array.
+
+declare -a snacks=("banaana" "apple" "orange")
+$snacks[0]
+
+$snacks[@] at sign shows entire array
+
+associative arrays:
+
+declare -A <arrname>
+
+<arrayname>[<name>]
