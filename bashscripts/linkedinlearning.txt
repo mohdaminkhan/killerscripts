@@ -1,23 +1,8 @@
 1/ Using codespaces. Gives us a Linux system to test bash.
 
-2/ There is no where to understand the meaning of the end of 
 
+2/ Using a mark M + Letter, to go back to a mark, ' + letter
 
-3/ Using a mark M + Letter, to go back to a mark, ' + letter
-
-
-Basics of Bash
-
-
-Piping and redirection
-
-
-Pipining: taking the output of one program and pipe it as the input of another
-program.
-STDOUT is sent to STDIN 
-
-cat doesnt paginate , less does you can pipe cat into less
-cat some.txt |  less
 
 
 Basics of Bash
@@ -26,42 +11,14 @@ Basics of Bash
 Piping and redirection
 
 
-Pipining: taking the output of one program and pipe it as the input of another
+PIPING: taking the output of one program and pipe it as the input of another
 program.
 STDOUT is sent to STDIN 
 
 cat doesnt paginate , less does you can pipe cat into less
 cat some.txt |  less
 
-
-Basics of Bash
-
-
-Piping and redirection
-
-
-Pipining: taking the output of one program and pipe it as the input of another
-program.
-STDOUT is sent to STDIN 
-
-cat doesnt paginate , less does you can pipe cat into less
-cat some.txt |  less
-
-
-Basics of Bash
-
-
-Piping and redirection
-
-
-Pipining: taking the output of one program and pipe it as the input of another
-program.
-STDOUT is sent to STDIN 
-
-cat doesnt paginate , less does you can pipe cat into less
-cat some.txt |  less
-
-Redirection
+REDIRECTION
 
 Take a stream and send it to or from files. 
 
