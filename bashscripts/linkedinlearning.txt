@@ -260,3 +260,28 @@ for i in "${arr[@]}" ....
 associative array...
 
 for i in "${!arr[@]}" ....
+
+
+
+FUNCTIONS
+
+define a function by providing it with a name followed by parantheses followed
+by braces. You can use a function keyword - in which case you don't need the
+parantheses. 
+You need to define a function before you use it.
+
+eg.
+fname() { ... } / function fname { ... }
+
+ To call a function we simply use the name:
+
+ fname 
+
+ to provide arguments to it we follow with the arguments
+
+ fname arg1 arg2 
+
+ We can access arguments from within the function the same way we would through
+ the script itself eg $1 <--- first argument  $2<--second argument 
+
+
