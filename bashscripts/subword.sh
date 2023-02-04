@@ -13,43 +13,57 @@ swapWord () {
 # after the first run, meaning the script would only work once per session
 
 declare OPTIND
-declare nofile=0
+declare isfile=true
+declare GREEN="\e[32m"
+declare lightGREEN="\e[32m"
+declare lightRED="\e[91m"
+declare lightYELLOW="\e[93m"
+declare YELLOW="\e[33j"
+declare ENDCOLOR="\e[0m"
+
 while getopts "t:s:f:" flags;do
 	case $flags in
 	t) 
-	echo "t value is $OPTARG"
+	echo -e "$lightGREEN word to replace $OPTARG $ENDCOLOR"
 	targetWord=$OPTARG
 	;;
 	s) 
-	echo "s value is $OPTARG"
+	echo -e "$YELLOW  replcement word is $OPTARG $ENDCOLOR"
 	substituteWord=$OPTARG
 	;;
 	f) 
-	echo "f value is $OPTARG"
+	echo -e "$lightYELLOW file to operate on $OPTARG $ENDCOLOR"
 	fileToCheck=$(readlink -f $OPTARG)
+	isfile=true
 	if [[ ! -e $fileToCheck ]]; then
 		
 		echo -e "$fileToCheck does not
 		exist.\n Please enter a existing file"
-		nofile=1
+		isfile=false
 	fi
 	;;
-	?) 
-	echo "Please supply t,s or f"
+?|!s|!f|!t) 
+	echo -e "Please supply t,s or f"
 	;;
 esac
 
-echo -e "\n"
+echo  -e "\n"
 done
-echo 
-# echo $fileToCheck
-# echo $(grep $targetWord $fileToCheck)
+echo -e 
+# echo -e $fileToCheck
+# echo -e $(grep $targetWord $fileToCheck)
 
-if ((!$nofile))
+if ($isfile)
 	then
 		sed -i.bak s/$targetWord/$substituteWord/g $fileToCheck
+		echo -e "$GREEEN original file saved in bak extention
+$ENDCOLOR" ;
+
+	else 
+		isfile=0
+		echo -e "${lightRED} You did not enter a file ${ENDCOLOR}"
 fi
 }
 
-swapWord "$@"
+swapWord "$@" 
 
