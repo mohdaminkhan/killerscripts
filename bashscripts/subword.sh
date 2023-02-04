@@ -56,9 +56,8 @@ echo -e
 if ($isfile)
 	then
 		sed -i.bak s/$targetWord/$substituteWord/g $fileToCheck
-		echo -e "$GREEEN original file saved in bak extention
-$ENDCOLOR" ;
-
+		echo -e "$GREEEN original file saved in bak extention$ENDCOLOR" 
+		less $fileToCheck
 	else 
 		isfile=0
 		echo -e "${lightRED} You did not enter a file ${ENDCOLOR}"
