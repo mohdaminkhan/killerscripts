@@ -243,3 +243,20 @@ condition false
 
 Both take DO keyword  DO statement DONE
 
+FOR loop loops through a list of values 
+
+for i in <list> <---- this can be anything that expands to a list
+do 
+<action>
+done
+
+
+you can use an array...
+
+declare -a myarr=("a" "b" "c" "d")  
+
+for i in "${arr[@]}" ....
+
+associative array...
+
+for i in "${!arr[@]}" ....
