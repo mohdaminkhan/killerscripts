@@ -194,6 +194,52 @@ $snacks[@] at sign shows entire array
 
 associative arrays:
 
-declare -A <arrname>
+declare -a <arrname>
 
 <arrayname>[<name>]
+
+
+to echo an array we use the parameter expansion ${...}
+ 
+ We can access using the [number] index accessor, and set elements in the array
+ by the same way.
+
+
+To add on the end of the array:  <arrname>+=( <value> ) <-- must be in
+paraentheses.
+
+TO show whole array we use <arrname>[@] <-- @ symbol shows all the elements
+
+ASSOCIATIVE ARRAYS
+
+declare -A <assocName>
+<assocName>["key"]="value"
+
+Access the value:   <assocName>["key"]
+Remember to to apply parameter expansion to it if you intend to echo.
+
+BOTH ARRAYS ARE LIMITED TO ONE LEVEL.
+
+https://deno.com/blog/the-future-and-past-is-server-side-rendering
+
+
+CONTROL STRUCTURES
+
+if ...
+then
+	...
+fi
+
+if <condition> ; then  <--- also valid
+
+
+LOOPS
+
+2 loops 
+WHILE , UNTIL
+
+both take a condition, WHILE runs while  it condition is true, UNTIL while its
+condition false 
+
+Both take DO keyword  DO statement DONE
+
