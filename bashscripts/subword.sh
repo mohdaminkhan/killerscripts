@@ -13,7 +13,7 @@ swapWord () {
 # after the first run, meaning the script would only work once per session
 
 declare OPTIND
-
+declare nofile=0
 while getopts "t:s:f:" flags;do
 	case $flags in
 	t) 
@@ -27,6 +27,12 @@ while getopts "t:s:f:" flags;do
 	f) 
 	echo "f value is $OPTARG"
 	fileToCheck=$(readlink -f $OPTARG)
+	if [[ ! -e $fileToCheck ]]; then
+		
+		echo -e "$fileToCheck does not
+		exist.\n Please enter a existing file"
+		nofile=1
+	fi
 	;;
 	?) 
 	echo "Please supply t,s or f"
@@ -36,16 +42,14 @@ esac
 echo -e "\n"
 done
 echo 
-echo $fileToCheck
-echo $(grep $targetWord $fileToCheck)
+# echo $fileToCheck
+# echo $(grep $targetWord $fileToCheck)
+
+if ((!$nofile))
+	then
+		sed -i.bak s/$targetWord/$substituteWord/g $fileToCheck
+fi
 }
-#  we want to loop over the files passed in.
-#	for passedIn in $@;
-#	do
-#		echo $passedIn
-#		grep Mary $passedIn
-#		echo -e "\n"
-#	done
-echo "this is passed in... $@"
+
 swapWord "$@"
 
