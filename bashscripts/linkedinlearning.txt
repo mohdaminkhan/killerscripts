@@ -282,6 +282,14 @@ fname() { ... } / function fname { ... }
  fname arg1 arg2 
 
  We can access arguments from within the function the same way we would through
- the script itself eg $1 <--- first argument  $2<--second argument 
+ the script itself eg $1 <--- first argument  $2<--second argument  $@ <--slist of
+ all arguments 
+
+You can run $FUNCNAME to refer to the funcname..
+
+Variable defined in functions will be available outside that function.
+UNLESS we proceed it with the 'local' keyword in which case it is scoped to the
+function.
+
 
 

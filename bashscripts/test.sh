@@ -16,3 +16,13 @@ echo " funcName ${FUNCNAME}"
 echo "local var ${someVar}"
 echo "not localised ${looseVar}"
 
+
+numOfArgs() {
+
+	echo -e "You passed in $# arguments \n to $FUNCNAME"
+
+}
+
+
+numOfArgs $@
+
