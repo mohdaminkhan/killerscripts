@@ -1,7 +1,5 @@
-doawk(){ 
-while read  $1
-do
-	awk '{ print $1}' $1
-done
-}
-doawk $1
+# parse out the enclosing brackets.
+
+sed  -in  '1,$ s/(^[)(]$)/ /g' $1
+
+
