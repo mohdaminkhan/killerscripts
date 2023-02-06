@@ -1,28 +1,7 @@
-FUNCNAME="another word"
-
-
-
-myFunc() {
-	local someVar="local var"
-	looseVar="not local"
-	echo $@
-	echo "$FUNCNAME"
-
-
+doawk(){ 
+while read  $1
+do
+	awk '{ print $1}' $1
+done
 }
-
-myFunc one two three
-echo " funcName ${FUNCNAME}"
-echo "local var ${someVar}"
-echo "not localised ${looseVar}"
-
-
-numOfArgs() {
-
-	echo -e "You passed in $# arguments \n to $FUNCNAME"
-
-}
-
-
-numOfArgs $@
-
+doawk $1

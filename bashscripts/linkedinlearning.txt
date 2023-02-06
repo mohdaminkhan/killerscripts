@@ -292,4 +292,80 @@ UNLESS we proceed it with the 'local' keyword in which case it is scoped to the
 function.
 
 
+AWK
 
+awk '<pattern>{<action> }' text.file. <---- pattern only performs actions meeting the
+patter, pattern can be a simple awk expression or a regex
+
+action: should be encolsed on curly braces. these parameters can be passed in
+through command line or from a referenced file. In other words you  can pass in
+file for the pattern and action.
+
+Indside the braces you specify a action and then you can reference which
+fields(words in that line) to operate on.
+You can actually list more than one action
+
+To reference words(fields) in a line you use the dollar sign, $0 <--- the entire
+line.
+
+eg. awk '{print $1, $2}' <-- print first word and second word for each line.
+The print line without any arguments prints the entire line.
+A comma denotes a field separator - a space - in the output. Otherwise the
+fields are concatenated. We can add delimieters by adding strings between
+fields.
+Each statmenet { } can have an action and a pattern.
+AWK has some builtin variables we can access, NF = number of fields in a line.
+THe variables can be used in patterns as well.
+
+awk 'NF=6{print}' 
+You can add more than one pattern action 
+
+awk 'NF=6{print} /up/{print}' 
+
+FLAGS
+
+-f <--- the following is the name of a file that contains awk action
+
+awk -f commands.file <file.txt>
+
+-F  <-- provides the field separatro awk -F t (tabs used as separtor)
+	The field separator could be any string, or regular expression
+-v <-- specify a variable value, awk -v hi=HELLO
+
+INPUT FILES
+
+You can specify the file to input on the command line, you can specify more than
+one. You can also pass text in directly by not passing it, STDIN will become
+available 
+
+awk takes redirection and piping like most other commands.
+
+
+You can specify the field separator with the program (ie within the braces{} )
+awk '{FS=","; print $2} <-- the problem here is that the parsing of the first
+line is done before action. There for the first line will not use the field
+seapartor, subsequent lines will (when entering from the command line)
+To get around this problem we use the keyword:
+BEGIN 
+BEGIN is actually a pattern
+awk 'BEGIN{FS=","} {print $2}'
+
+
+RECORD
+Each line the words are considered fields, each line is a RRECORD, but what is
+line? What is the end of a line. That is determined by the operating system.
+
+But what if your input file is not devided into lines. How do we set the
+delimiter for RECORDS?
+RS 
+awk 'BEGIN{RS="!";FS=","} {print $3}'
+
+With RS and FS you can take almost any formatted collection and render it into
+usable fields and Records.
+If you set RS to an empty string, RS="", any empty line is set as the Record
+Separator.
+
+You can also sent FS top "\n" to make it a newline
+
+The output for awk should by default use a space as its output field separator 
+And a newline as the output record seapartor. OFS and ORS
