@@ -20,21 +20,15 @@
 
 checkForFile() {
 
-	echo "$1"
 	if [[ ! -f "$1" ]] 
 	then
 		printf "There is no file called $1"
 	else 
 		printf "%s is a file \n" $1
-
 	fi
 
 }
 	
-
-
-
-
 # declare variables that may be used throughout
 declare OPTIND # This is iterator in getopts
 declare isfile=true
@@ -52,8 +46,9 @@ declare format="table"
 # get options passed in using getopts
 # for 
 
-# check if any arguments are passed in 
+formatJson() {
 
+# check if any arguments are passed in 
 if [[ $# -eq 0 ]]
 then
 	>&2 printf "${lightRED} No arguments passed in, please provide arguments
@@ -61,22 +56,27 @@ then
 	exit 2
 fi
 
+
+# check if any arguments are passed in 
+
 while getopts "i:o:f:" flags; do 
 	case $flags in
 		i) if ( checkForFile $OPTARG ) ;then
-		read line1 < $OPTARG
-		echo $line1
+			outputFile=$(awk -n '{print $1"--"$2"--"}' $OPTARG)
+			echo "succeeded"
 		fi	
 			;;
-		o) checkForFile $OPTARG
+		o) 
+		cat $outputFile > $OPTARG	
 			;;
-		f)checkForFile $OPTARG
+		f) echo $OPTARG
 			;;
-		?)checkForFile $OPTARG
+		?) echo "this is not an accepted parameter $OPTARG"
 
 
 	esac
 
 done
-
+}
+formatJson $@
 printf "The script is finished now \n"
