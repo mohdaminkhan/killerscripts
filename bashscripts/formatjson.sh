@@ -18,14 +18,15 @@
 
 # Function to check if argument is a file location
 
-checkFile() {
+checkForFile() {
 
 	echo "$1"
-	if [[ ! -f "$1" ]]
+	if [[ ! -f "$1" ]] 
 	then
 		printf "There is no file called $1"
 	else 
-		printf "That is a file"
+		printf "%s is a file \n" $1
+
 	fi
 
 }
@@ -62,13 +63,16 @@ fi
 
 while getopts "i:o:f:" flags; do 
 	case $flags in
-		i) checkFile $OPTARG
+		i) if ( checkForFile $OPTARG ) ;then
+		read line1 < $OPTARG
+		echo $line1
+		fi	
 			;;
-		o) checkFile $OPTARG
+		o) checkForFile $OPTARG
 			;;
-		f)checkFile $OPTARG
+		f)checkForFile $OPTARG
 			;;
-		?)checkFile $OPTARG
+		?)checkForFile $OPTARG
 
 
 	esac
