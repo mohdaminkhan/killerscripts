@@ -19,10 +19,11 @@
 # Function to check if argument is a file location
 
 checkFile() {
-	if [[ ! -f $1 ]]
-	then
-		printf '%-6s' "this is text"
 
+	echo "$1"
+	if [[ ! -f "$1" ]]
+	then
+		printf "There is no file called $1"
 	else 
 		printf "That is a file"
 	fi
@@ -49,15 +50,25 @@ declare format="table"
 
 # get options passed in using getopts
 # for 
+
+# check if any arguments are passed in 
+
+if [[ $# -eq 0 ]]
+then
+	>&2 printf "${lightRED} No arguments passed in, please provide arguments
+	\n ${ENDCOLOR}"
+	exit 2
+fi
+
 while getopts "i:o:f:" flags; do 
 	case $flags in
-		i) checkFile $OPTARGS
+		i) checkFile $OPTARG
 			;;
-		o) checkFile $OPTARGS
+		o) checkFile $OPTARG
 			;;
-		f)checkFile $OPTARGS
+		f)checkFile $OPTARG
 			;;
-		?)checkFile $OPTARGS
+		?)checkFile $OPTARG
 
 
 	esac
