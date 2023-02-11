@@ -39,7 +39,7 @@ declare lightYELLOW="\e[93m"
 declare YELLOW="\e[33j"
 declare ENDCOLOR="\e[0m"
 declare inputFile=null
-declare outputFile=null
+declare output=null
 declare format="table"
 
 
@@ -64,12 +64,13 @@ fi
 while getopts "i:o:f:" flags; do 
 	case $flags in
 		i) if ( checkForFile $OPTARG ) ;then
-			awk -n '{print $1"--"$2"--"}' $OPTARG >> $outputFile
+			sed -e 's/^\[\(.*\)\]//g' "$OPTARG" | awk -n 'BEGIN{FS=":"}
+			{print $1"\n"$2"n"}' > $output
 			echo "succeeded"
 		fi	
 			;;
 		o) 
-			 cat $outputFile >> $OPTARG 
+			 cat $output > $OPTARG 
 			;;
 		f) echo $OPTARG
 			;;
