@@ -56,18 +56,20 @@ then
 	exit 2
 fi
 
+# create file to print to
+
 
 # check if any arguments are passed in 
 
 while getopts "i:o:f:" flags; do 
 	case $flags in
 		i) if ( checkForFile $OPTARG ) ;then
-			outputFile=$(awk -n '{print $1"--"$2"--"}' $OPTARG)
+			awk -n '{print $1"--"$2"--"}' $OPTARG >> $outputFile
 			echo "succeeded"
 		fi	
 			;;
 		o) 
-		cat $outputFile > $OPTARG	
+			 $OPTARG 
 			;;
 		f) echo $OPTARG
 			;;
