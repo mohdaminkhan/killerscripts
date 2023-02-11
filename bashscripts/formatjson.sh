@@ -64,7 +64,7 @@ fi
 while getopts "i:o:f:" flags; do 
 	case $flags in
 		i) if ( checkForFile $OPTARG ) ;then
-			sed -e 's/^\[\(.*\)\]//g' "$OPTARG" | awk -n 'BEGIN{FS=":"}
+			sed -E 's!^\[\(.*\)\]!!g' "$OPTARG" | awk -n 'BEGIN{FS=":"}
 			{print $1"\n"$2"n"}' > $output
 			echo "succeeded"
 		fi	
