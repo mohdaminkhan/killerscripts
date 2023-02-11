@@ -69,7 +69,7 @@ while getopts "i:o:f:" flags; do
 		fi	
 			;;
 		o) 
-			 $OPTARG 
+			 cat $outputFile >> $OPTARG 
 			;;
 		f) echo $OPTARG
 			;;
