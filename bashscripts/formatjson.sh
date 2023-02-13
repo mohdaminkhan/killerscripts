@@ -64,13 +64,13 @@ fi
 while getopts "i:o:f:" flags; do 
 	case $flags in
 		i) if ( checkForFile $OPTARG ) ;then
+		# Using 'tr' we can easily remove whitespace from our file and
+		# bring everything onto oneline, making using sed easier.
 		cat $OPTARG | tr -d " \t\n\r" > $output;
 			echo "succeeded"
 		fi	
 			;;
-		o) 
-			cat $output | sed -e 's!^\[\(.*\)\]$!\1!gm' > $OPTARG 
-			
+		o) cat $output | sed -e 's!^\[\(.*\)\]$!\1!gm' | awk -F ':' '{print NF,$3}' > $OPTARG 
 			;;
 		f) echo $OPTARG
 			;;
