@@ -39,9 +39,26 @@ declare lightYELLOW="\e[93m"
 declare YELLOW="\e[33j"
 declare ENDCOLOR="\e[0m"
 declare inputFile=null
-declare output=null
-declare format="table"
+declare outputFile="./tabulatedjson.txt"
+declare format=null
 
+
+# function that performs the parsing
+
+
+tabulateJsonText() {
+
+local output=null;
+
+# Using 'tr' we can easily remove whitespace from our file and
+cat $1 | tr -d " \t\n\r" > $output;
+
+cat $output
+# this removes the outer brackets that enclose the whole payload.
+cat $output | sed -e 's!^\[\(.*\)\]$!\1!gm' > $2
+echo "Done"
+cat $2
+}
 
 # get options passed in using getopts
 # for 
@@ -60,26 +77,27 @@ fi
 
 
 # check if any arguments are passed in 
-
+# and then assign them to variables.
 while getopts "i:o:f:" flags; do 
 	case $flags in
 		i) if ( checkForFile $OPTARG ) ;then
-		# Using 'tr' we can easily remove whitespace from our file and
-		# bring everything onto oneline, making using sed easier.
-		cat $OPTARG | tr -d " \t\n\r" > $output;
-			echo "succeeded"
+		inputFile=$OPTARG
 		fi	
 			;;
-		o) cat $output | sed -e 's!^\[\(.*\)\]$!\1!gm' | awk -F ':' '{print NF,$3}' > $OPTARG 
+		o) outputFile=$OPTARG 
 			;;
-		f) echo $OPTARG
+		f) format=$OPTARG || "TABULATE" 
 			;;
 		?) echo "this is not an accepted parameter $OPTARG"
-
 
 	esac
 
 done
+
+
+tabulateJsonText $inputeFile $outputFile $format
+
+
 }
 formatJson $@
 printf "The script is finished now \n"
