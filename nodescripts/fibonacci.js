@@ -12,7 +12,7 @@ app.get("/finbonacci", (req, res) => {
   const startTime = new Date();
   const result = finbonacci(parseInt(req.query.number));
   const endTime = new Date();
-
+  console.log;
   res.json({
     number: parseInt(req.query.number),
     finbonacci: result,
