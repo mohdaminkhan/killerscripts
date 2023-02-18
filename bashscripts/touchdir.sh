@@ -7,8 +7,9 @@
 # eg 'touchdir some/path/somefile.txt' 
 
 
-declare path=$1;
-
+declare uri=$1;
+declare path;
+declare newFile;
 touchdir() {
 
 	if [[ -z $1  ]]
@@ -20,7 +21,10 @@ touchdir() {
 		# now we need to take the string and parse out the piece
 		# of text after the last '/', look up ways to do this in
 		# bash.
-		echo "thank you for providing $1 as the file to create"
+		path=$(echo "$1" | grep -Po '.*(?=/.*$)')
+		echo $path
+		newFile=$(echo $1 | awk -F '/' '{print $NF}')
+		echo $newFile
 	fi 
 
 }
