@@ -4,14 +4,13 @@
 # directory
 
 # The input to the command should be the path and file name.
-# eg 'touchdir some/path/somefile.txt' 
+# eg 'dtouchd some/path/somefile.txt' 
 
 
 declare uri=$1;
 declare path;
 declare newFile;
-touchdir() {
-
+dtouch() { 
 	if [[ -z $1  ]]
 	then 
 		echo "please provide a NEW path and file with this command"
@@ -35,5 +34,5 @@ touchdir() {
 	fi
 
 }
-touchdir $@
+dtouch $@
 
