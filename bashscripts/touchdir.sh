@@ -27,6 +27,13 @@ touchdir() {
 		echo $newFile
 	fi 
 
+	if [[ ! -z "$path" && ! -z "$newFile" ]] 
+	then
+		mkdir -p $path && cd $path && touch $newFile
+	else
+		echo "some parameters are missing"
+	fi
+
 }
 touchdir $@
 
