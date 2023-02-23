@@ -3,7 +3,7 @@
 "scripts":{
 
 "algo":"ts-node algorithms.ts",
-"test":"./runscripts.sh -- file",
+"test":"./runscripts.sh",
 "read":"read "
 },
   "dependencies": {
