@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
+echo "shell runnning $1"
 
-echo $(realpath $1)
-
-
-## node $fileToRun
+node $1 

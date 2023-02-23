@@ -3,8 +3,7 @@
 "scripts":{
 
 "algo":"ts-node algorithms.ts",
-"test":"./runscripts.sh",
-"read":"read "
+"test":"./runscripts.sh"
 },
   "dependencies": {
     "express": "^4.18.2",
