@@ -8,3 +8,4 @@ function doSomething() {
 
 console.log(argv);
 console.log(doSomething);
+console.log("The number of arguemnts passed in is", argv.length);
