@@ -5,4 +5,9 @@ const a = new ArrayBuffer(6);
 
 const read8 = new Uint8Array(a);
 
-console.log(read8);
+// Binary Search
+//
+
+function bsSearch(low: number, high: number, arr: number[]): Boolean {
+  return true;
+}
