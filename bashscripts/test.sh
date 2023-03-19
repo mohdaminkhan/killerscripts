@@ -10,6 +10,13 @@
 #  No quotes will print and expand variables and do command substitution but
 #  will not escape chaaracters even with -e flag   
 
+# READING COMMAND LINE ARGUMENTS.
+
+echo $1
+echo $2
+echo $3
+echo $@
+
 
 
 
